@@ -26,3 +26,33 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish -c Release -o release
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        # Artifact name
+        name: woop # optional, default is artifact
+        # A file, directory or wildcard pattern that describes what to upload
+        path: /home/runner/work/demo-project/demo-project/release/
+        # The desired behavior if no files are found using the provided path.
+        retention-days: 3 # optional
+    - name: Discord Webhook Notify
+      # You may pin to the exact commit or the version.
+      # uses: rjstone/discord-webhook-notify@89b0bf43c2c8514f70d0dcba4a706b904e8a3112
+      uses: rjstone/discord-webhook-notify@v1.0.4
+      with:
+        # Discord webhook URL. Should be stored in a secret and inserted as a context expression.
+        webhookUrl: ${{ secrets.DISCORD_WEBHOOK_LINK }}
+        # Severity level - info, warn, or error
+        severity: info # optional, default is error
+        # Embed notification message. Use context expressions and environment variables to provide information. Default provides branch and user info.
+        description: hello folks # optional
+        # Additional text after the notification message in case you want to retain the default message.
+        details: details # optional
+        # Text to be sent as normal text above the embed. Use context expressions and environment variables to provide information.
+        text: hello class # optional
+        # Username to display in discord.
+        username: $ {{ github.actor }} # optional
+
+
