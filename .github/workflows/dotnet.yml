@@ -53,6 +53,6 @@ jobs:
         # Text to be sent as normal text above the embed. Use context expressions and environment variables to provide information.
         text: hello class # optional
         # Username to display in discord.
-        username: $ {{ github.actor }} # optional
+        username: ${{ github.actor }} # optional
 
 
