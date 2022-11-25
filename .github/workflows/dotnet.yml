@@ -47,9 +47,9 @@ jobs:
         # Severity level - info, warn, or error
         severity: info # optional, default is error
         # Embed notification message. Use context expressions and environment variables to provide information. Default provides branch and user info.
-        description: hello folks # optional
+        description: ${{ github.event_name }} on ${{ github.ref }}  # optional
         # Additional text after the notification message in case you want to retain the default message.
-        details: details # optional
+        details: ${{ github.workspace }}. ${{ github.event.head_commit.message }} # optional
         # Text to be sent as normal text above the embed. Use context expressions and environment variables to provide information.
         text: hello class # optional
         # Username to display in discord.
