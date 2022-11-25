@@ -51,7 +51,7 @@ jobs:
         # Additional text after the notification message in case you want to retain the default message.
         details: Some details # optional
         # Text to be sent as normal text above the embed. Use context expressions and environment variables to provide information.
-        text: ${{ github.event.head_commit.message } # optional
+        text: ${{ github.event.head_commit.message }} # optional
         # Username to display in discord.
         username: ${{ github.actor }} # optional
     # Deploy the site
