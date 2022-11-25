@@ -49,9 +49,9 @@ jobs:
         # Embed notification message. Use context expressions and environment variables to provide information. Default provides branch and user info.
         description: ${{ github.event_name }} on ${{ github.ref_name }}  # optional
         # Additional text after the notification message in case you want to retain the default message.
-        details: ${{ github.event.head_commit.message }} # optional
+        details: Some details # optional
         # Text to be sent as normal text above the embed. Use context expressions and environment variables to provide information.
-        text: hello class # optional
+        text: ${{ github.event.head_commit.message } # optional
         # Username to display in discord.
         username: ${{ github.actor }} # optional
     # Deploy the site
