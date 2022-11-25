@@ -54,5 +54,12 @@ jobs:
         text: hello class # optional
         # Username to display in discord.
         username: ${{ github.actor }} # optional
+    # Deploy the site
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: publish/wwwroot
+        force_orphan: true
 
 
